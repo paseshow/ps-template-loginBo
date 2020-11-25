@@ -1,0 +1,47 @@
+<mat-card class="r-mat-card">
+    <form [formGroup]="loginForm" class="form-validate" role="form" name="loginForm" novalidate="" (submit)="loginUsuario()">
+
+        <mat-card-header>
+            <mat-card-title class="text-center login-mat-card-title">
+                {{title.getTitle()}}
+            </mat-card-title>
+            <mat-card-subtitle class="login-mat-card-subtitle">
+                Ingrese sus datos
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content style="margin-top: 10px;" [ngClass]="loginError?'animated shake': ''">
+            <div fxLayout="column">
+
+                <mat-form-field class="login-mat-form-field">
+                    <input matInput placeholder="DNI" value="" name="username" autocapitalize="none" autocomplete="on" formControlName="username" required />
+                    <mat-error>
+                        <control-validacion [control]="loginForm.get('username')"></control-validacion>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="">
+                    <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" value="" name="password" autocapitalize="none" autocomplete="off" formControlName="password" required="" />
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-error>
+                        <control-validacion [control]="loginForm.get('password')"></control-validacion>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <div fxLayout="column">
+                <button class="mat-green" mat-button type="submit">Ingresar</button>
+                <div class="login-errors">
+                    <mat-error *ngIf="loginError">
+                        {{ mensajeLoginError }}
+                    </mat-error>
+                    <mat-error *ngIf="loginErrorNoVerificado">
+                        {{ mensajeErrorNoVerificado }}
+                    </mat-error>
+                </div>
+            </div>
+        </mat-card-actions>
+    </form>
+</mat-card>
