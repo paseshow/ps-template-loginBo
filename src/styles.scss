@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #673ab7 !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #673ab7 !important;
+}
+
+mat-expansion-panel#va {
+    div.mat-expansion-panel-body {
+        padding: 0 !important;
+    }
+}
+
+.buttonAdd {
+    background-color: #298eec;
+    color: white;
+}
+
+.buttonEdit {
+    color: #4caf50;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.mat-tooltip {
+    font-size: 0.9em;
+}
+
+mat-dialog-actions {
+    height: 85px;
+}
+
+body .mat-card.mat-card {
+    padding: 1%;
+}
+
+th.mat-header-cell {
+    font-size: 1em;
+    color: black;
+    font-weight: bolder;
+}
+
+.imagenLogo {
+    width: auto;
+    height: 40px;
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 14px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

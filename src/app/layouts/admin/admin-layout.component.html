@@ -1,0 +1,92 @@
+<div class="app search-i" [dir]="layoutDir"
+  [ngClass]="[ menuLayout, selectedSidebarColor, selectedHeaderColor, collapsedClass]" [class.boxed]="boxed"
+  [class.collapsed-sidebar]="collapseSidebar" [class.compact-sidebar]="compactSidebar"
+  [class.bg-img-disable]="!sidebarBg">
+  <mat-sidenav-container class="app-inner">
+    <mat-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'"
+      [opened]="!isOver()">
+      <div class="opt-side relative ">
+        <div class="sidebar-container ">
+          <div class="branding text-center">
+            <h2>
+              <span>PaseShow</span>
+            </h2>
+          </div>
+          <div class="main-nav">
+            <mat-nav-list appAccordion class="navigation relative">
+              <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems">
+                <a appAccordionToggle class="relative" mat-ripple [routerLink]="['/', menuitem.state]"
+                  *ngIf="menuitem.type === 'link'">
+                  <mat-icon>{{ menuitem.icon }}</mat-icon>
+                  <span>{{ menuitem.name }}</span>
+                  <span fxFlex></span>
+                  <span class="menu-badge mat-{{ badge.type }}"
+                    *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                </a>
+                <a appAccordionToggle class="relative" mat-ripple href="javascript:;" *ngIf="menuitem.type === 'sub'">
+                  <mat-icon>{{ menuitem.icon }}</mat-icon>
+                  <span>{{ menuitem.name }}</span>
+                  <span fxFlex></span>
+                  <span class="menu-badge mat-{{ badge.type }}"
+                    *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                  <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
+                </a>
+                <mat-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub'">
+                  <mat-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
+                    <a [routerLink]="['/', menuitem.state, childitem.state ]" class="relative"
+                      mat-ripple>{{ childitem.name }}</a>
+                  </mat-list-item>
+                </mat-nav-list>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-nav-list>
+          </div>
+        </div>
+      </div>
+      <div class="bg-overlay"></div>
+    </mat-sidenav>
+    <mat-toolbar class="main-header">
+      <div class="vertical-menu w-100">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button (click)="menuToggleFunc()" mat-icon-button class="lines-btn">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <label ngClass.xs="title-toolbar-xs" ngClass.sm="title-toolbar-xs">
+              {{title.getTitle()}}
+            </label>
+          </div>
+
+          <div>
+            <button [mat-menu-trigger-for]="user" mat-icon-button class="ml-xs " style="float: right;">
+              <mat-icon>person</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-menu #user="matMenu" class="opt-menu" x-position="before">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            Sign Out
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+    <div class="body-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>
+
+<style>
+  .relative {
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .w-100 {
+    width: 100%;
+  }
+</style>

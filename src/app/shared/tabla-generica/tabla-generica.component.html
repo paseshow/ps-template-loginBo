@@ -1,0 +1,14 @@
+<mat-table [dataSource]="dataSource" #matTable class="width100" *ngIf="columnsAndProps">
+
+  <ng-container [matColumnDef]="columnAndProp.columnName" *ngFor="let columnAndProp of columnsAndProps">
+    <mat-header-cell *matHeaderCellDef ngClass.xs="mat-header-cell-xs" ngClass.sm="mat-header-cell-sm"
+      ngClass.md="mat-header-cell-md"> {{columnAndProp.columnName}} </mat-header-cell>
+    <mat-cell *matCellDef="let row" ngClass.xs="mat-cell-xs" ngClass.sm="mat-cell-sm" ngClass.md="mat-cell-md">
+      {{row[columnAndProp.prop]}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef style="font-weight: bold;"> {{footer[columnAndProp.prop] }}</mat-footer-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+</mat-table>
