@@ -1,0 +1,57 @@
+@media (max-width: 767px) {
+    .r-mat-card {
+        width: 80%;
+        padding: 15px !important;
+        margin: 10px auto;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .r-mat-card {
+        width: 50%;
+        padding: 15px !important;
+        float: right;
+    }
+}
+
+@media (min-width: 1024px) {
+    .r-mat-card {
+        margin: 10px 15px;
+        width: 30%;
+        padding: 15px !important;
+        float: right;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    .login-mat-form-field {
+        margin-bottom: 1rem;
+    }
+}
+
+.mat-green {
+    background-color: #4caf50 !important;
+    color: rgba(0, 0, 0, .87) !important;
+}
+
+.mat-drawer-container {
+    background-color: white !important;
+}
+
+.login-errors {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.login-mat-card-title {
+    padding-left: 0.5rem !important;
+    font-size: 1.5rem !important;
+}
+
+.login-mat-card-subtitle {
+    padding-left: 0.5rem !important;
+    margin-bottom: 0;
+    font-size: 1rem !important;
+}
+
+.text-center {
+    text-align: center;
+}
